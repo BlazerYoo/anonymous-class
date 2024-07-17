@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student</title>
+
+  <style>
+    .peer {
+      color: red;
+    }
+
+    .socket {
+      color: green;
+    }
+  </style>
+
+  <!-- import libraries -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+</head>
+
+<body>
+
+  <div id="messages"></div>
+  <label for="question">Ask question:</label>
+  <textarea id="question" name="question" rows="10" cols=50 maxlength="200" required></textarea>
+  <button type="button" id="ask-button">Submit</button>
+  
+  <script>
+    const ROOM_ID = '<%= roomId %>';
+    
+    let messages = document.getElementById('messages');
+    let message = document.createElement('p');
+    message.textContent = `Assigned to room ${ROOM_ID}`;
+    messages.appendChild(message);
+  </script>
+
+   <script src="/student-tunnel.js"></script>
+
+</body>
+
+</html>
