@@ -24,6 +24,9 @@
 <body>
 
   <div id="messages"></div>
+  <label for="question">Ask question:</label>
+  <textarea id="question" name="question" rows="10" cols=50 maxlength="200" required></textarea>
+  <button type="button" id="ask-button">Submit</button>
   
   <script>
     const ROOM_ID = '<%= roomId %>';

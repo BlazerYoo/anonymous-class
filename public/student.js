@@ -28,6 +28,12 @@ const createPeerConnection = (connection) => {
         // Keep track of peer connections
         peers[connection.peer] = connection;
         logMessage(`peerjs - My connections ${Object.keys(peers).length}`);
+
+        document.getElementById("ask-button").addEventListener("click", function () {
+            const question = document.getElementById("question").value;
+            connection.send(question);
+            alert("Submitted! Thanks for participating! Click ok to continue. Ask any question anytime!");
+        });
     });
 
     // When myPeer receives data

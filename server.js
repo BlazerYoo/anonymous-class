@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
         console.log(`socket.io - Client ${clientId} added to room ${roomId}`);
 
         // Alert clients in room that new client joined
-        socket.to(roomId).emit('client-joined-room', roomId, clientId);
+        socket.to(roomId).emit('student-joined-room', roomId, clientId);
 
         // Save roomId and clientId
         socket.data.roomId = roomId;
@@ -79,7 +79,7 @@ io.on('connection', (socket) => {
         let clientId = socket.data.clientId;
         if (roomId && clientId) {
             console.log(`socket.io - Client ${clientId} disconnecting from socket.io server because ${reason}`);
-            socket.to(roomId).emit('client-left-room', roomId, clientId);
+            socket.to(roomId).emit('student-left-room', roomId, clientId);
         } else {
             console.log(`socket.io - A client (with no connection with PeerServer & no assigned socket.io room) disconnecting from socket.io server because ${reason}`);
         }

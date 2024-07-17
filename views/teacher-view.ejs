@@ -11,6 +11,13 @@
       color: red;
     }
 
+    .question {
+      color: blue;
+      word-wrap:break-word;
+      width: 50vw;
+      white-space: normal;
+    }
+
     .socket {
       color: green;
     }
@@ -30,7 +37,7 @@
     
     let messages = document.getElementById('messages');
     let message = document.createElement('p');
-    message.textContent = `Assigned to room ${ROOM_ID}`;
+    message.textContent = `Assigned to room ${ROOM_ID} | link: ${window.location.href.split('/').slice(0,3).join('/')}/${ROOM_ID}`;
     messages.appendChild(message);
   </script>
 

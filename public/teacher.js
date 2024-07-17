@@ -32,7 +32,7 @@ const createPeerConnection = (connection) => {
 
     // When myPeer receives data
     connection.on('data', (data) => {
-        logMessage(`peerjs - myPeer received ${data}`);
+        logMessage(`QUESTION - peerjs - myPeer received ${data}`);
     });
 
     // When myPeer closed connection with new peer
@@ -61,13 +61,13 @@ socket.on('connect', () => {
     logMessage('socket.io - I connected to socket.io server');
 });
 // When new client joined room, connect to new client (peer)
-socket.on('client-joined-room', (roomId, clientId) => {
-    logMessage(`socket.io - Client ${clientId} joined my room ${roomId}`);
+socket.on('student-joined-room', (roomId, clientId) => {
+    logMessage(`socket.io - Student ${clientId} joined my room ${roomId}`);
     connectToPeer(clientId);
 });
 // When clients leave room, close peer connection
-socket.on('client-left-room', (roomId, clientId) => {
-    logMessage(`socket.io - Client ${clientId} left my room ${roomId}`);
+socket.on('student-left-room', (roomId, clientId) => {
+    logMessage(`socket.io - Student ${clientId} left my room ${roomId}`);
     removePeerConnection(clientId);
 });
 // I disconnect with socket.io server
@@ -119,9 +119,16 @@ let logMessage = (message_content) => {
     let message = document.createElement('p');
     if (message_content.split(' - ')[0][0] === 'p') {
         message.classList.add('peer');
+    } else if (message_content.split(" - ")[0][0] === "Q") {
+        message.classList.add("question");
     } else {
-        message.classList.add('socket');
+        message.classList.add("socket");
     }
     message.textContent = message_content;
     messages.appendChild(message);
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+    });
 };
