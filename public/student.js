@@ -121,13 +121,5 @@ myPeer.on('error', (error) => {
 
 // Display events
 let logMessage = (message_content) => {
-    let messages = document.getElementById('messages');
-    let message = document.createElement('p');
-    if (message_content.split(' - ')[0][0] === 'p') {
-        message.classList.add('peer');
-    } else {
-        message.classList.add('socket');
-    }
-    message.textContent = message_content;
-    messages.appendChild(message);
+    console.log();
 };
