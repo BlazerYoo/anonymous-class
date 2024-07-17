@@ -14,11 +14,17 @@ app.use(express.static('public'));
 
 // Generate random roomId
 app.get('/', (req, res) => {
-    res.redirect(`/${uuidV4()}`);
+    res.redirect(`/teacher-${uuidV4()}`);
 });
 
+// Teacher route
+app.get('/teacher-:room', (req, res) => {
+    res.render('teacher-view', { roomId: req.params.room.substring(9) });
+});
+
+// Student route
 app.get('/:room', (req, res) => {
-    res.render('room-view', { roomId: req.params.room });
+    res.render('student-view', { roomId: req.params.room });
 });
 
 
